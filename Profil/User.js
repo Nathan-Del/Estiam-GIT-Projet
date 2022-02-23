@@ -15,6 +15,7 @@ export default function User({ user }) {
    
    
    
+   //Ajout modification profil
     const updateUser = () => {
         const data = {
             nom: nom,
