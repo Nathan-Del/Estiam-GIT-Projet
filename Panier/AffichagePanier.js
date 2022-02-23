@@ -14,18 +14,18 @@ function AffichagePanier({ user }) {
     const navigation = useNavigation()
     console.log('pouet',user.panier)
     
-    // const ValiderPanier = () =>{
-    //     if(user.panierValide[0] != undefined){
+    const ValiderPanier = () =>{
+        if(user.panierValide[0] != undefined){
             
-    //        db.collection("user").doc(user.id).update({panierValide: user.panier})
-    //        db.collection("user").doc(user.id).update({ panier: paniervide})
-    //        navigation.replace("Home", {screen: "Panier"})
-    //     }
-    //     else{
-    //         db.collection("user").doc(user.id).update({ panierValide: user.panier })
-    //         db.collection("user").doc(user.id).update({ panier: paniervide})
-    //         navigation.replace("Home", {screen: "Panier"})
-    //     }
+           db.collection("user").doc(user.id).update({panierValide: user.panier})
+           db.collection("user").doc(user.id).update({ panier: paniervide})
+           navigation.replace("Home", {screen: "Panier"})
+        }
+        else{
+            db.collection("user").doc(user.id).update({ panierValide: user.panier })
+            db.collection("user").doc(user.id).update({ panier: paniervide})
+            navigation.replace("Home", {screen: "Panier"})
+        }
         
     }
 
@@ -72,7 +72,7 @@ function AffichagePanier({ user }) {
         return( 
         <ScrollView>
             {renderProduct()}
-            {/* <Button mode="contained" style={{width:"70%", backgroundColor:"green", marginLeft:50, marginTop:20}} onPress={() => ValiderPanier() } >Valider ma commande</Button> */}
+            { <Button mode="contained" style={{width:"70%", backgroundColor:"green", marginLeft:50, marginTop:20}} onPress={() => ValiderPanier() } >Valider ma commande</Button> }
         </ScrollView>
         )
     }
