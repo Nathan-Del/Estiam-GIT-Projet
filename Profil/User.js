@@ -124,6 +124,7 @@ export default function User({ user }) {
 
     )
 }
+//Ajout de l'historique panier
 const styles = StyleSheet.create({
 
     input: {
