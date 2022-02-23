@@ -36,56 +36,56 @@ export default function Prod({ prod }) {
         loadUser()
        
     }, [])
-    // let iddoc = ""
-    // user.map(item =>
-    //     iddoc = item.id
-    // )
+    let iddoc = ""
+    user.map(item =>
+        iddoc = item.id
+    )
 
-    // const found = () => {
-    //     if (user[0].panier[0] != undefined) {
-    //         console.log(user[0].panier.find(element => element.id == prod.id))
-    //         return user[0].panier.find(element => element.id == prod.id);
-    //     }
-    //     else {
-    //         return undefined
-    //     }
-    // }
+    const found = () => {
+        if (user[0].panier[0] != undefined) {
+            console.log(user[0].panier.find(element => element.id == prod.id))
+            return user[0].panier.find(element => element.id == prod.id);
+        }
+        else {
+            return undefined
+        }
+    }
 
 
-    // const addbasket = (id) => {
+    const addbasket = (id) => {
 
-    //     if (found() != undefined) {
+        if (found() != undefined) {
 
-    //         const i = (element) => element.id == id;
-    //         const index = user[0].panier.findIndex(i);
-    //         const nombre = user[0].panier[index].nb
-    //         const newpanier = {
-    //             id: id,
-    //             nom: prod.nom,
-    //             description: prod.description,
-    //             nb: nombre + 1,
-    //             image: prod.pathimage,
-    //             prix: prod.prix
-    //         }
-    //         user[0].panier[index] = newpanier;
-    //         db.collection("user").doc(iddoc).update({ panier: user[0].panier })
-    //     }
-    //     else {
-    //         const newpanier = {
-    //             id: id,
-    //             nom: prod.nom,
-    //             description: prod.description,
-    //             nb: 1,
-    //             image: prod.pathimage,
-    //             prix: prod.prix
-    //         }
-    //         db.collection("user").doc(iddoc).update({ panier: firebase.firestore.FieldValue.arrayUnion(newpanier)})
-    //         if(user[0].panier[0] == undefined) {
-    //             navigation.replace("Home")
-    //         }          
+            const i = (element) => element.id == id;
+            const index = user[0].panier.findIndex(i);
+            const nombre = user[0].panier[index].nb
+            const newpanier = {
+                id: id,
+                nom: prod.nom,
+                description: prod.description,
+                nb: nombre + 1,
+                image: prod.pathimage,
+                prix: prod.prix
+            }
+            user[0].panier[index] = newpanier;
+            db.collection("user").doc(iddoc).update({ panier: user[0].panier })
+        }
+        else {
+            const newpanier = {
+                id: id,
+                nom: prod.nom,
+                description: prod.description,
+                nb: 1,
+                image: prod.pathimage,
+                prix: prod.prix
+            }
+            db.collection("user").doc(iddoc).update({ panier: firebase.firestore.FieldValue.arrayUnion(newpanier)})
+            if(user[0].panier[0] == undefined) {
+                navigation.replace("Home")
+            }          
             
-    //     }
-    // }
+        }
+    }
 
     const navigation = useNavigation();
 
@@ -99,8 +99,8 @@ export default function Prod({ prod }) {
                 <Text style={styles.text}>
                 {prod.prix}€
                 </Text>
-                {/* <Button buttonStyle={styles.button}  onPress={() => { navigation.replace("Detail", prod.id) }} >Detail</Button>
-                <Button buttonStyle={styles.button}  onPress={() => addbasket(prod.id)} >Ajouter au panier</Button> */}
+                <Button buttonStyle={styles.button}  onPress={() => { navigation.replace("Detail", prod.id) }} >Detail</Button>
+                <Button buttonStyle={styles.button}  onPress={() => addbasket(prod.id)} >Ajouter au panier</Button>
             </Card>     
         </View>
 
